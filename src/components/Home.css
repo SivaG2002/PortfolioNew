@@ -1,0 +1,164 @@
+.home-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 50px;
+}
+
+.sivag {
+  font-size: 48px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #00ddeb, #ff00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Left Side: Photo */
+.photo-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.round-photo {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #00ddeb;
+  transform: scale(1.2); /* Zoom the image inside the frame */
+  object-position: center; /* Ensure the image stays centered */
+}
+
+/* Right Side: Text */
+.text-container {
+  flex: 1;
+  text-align: left;
+}
+
+.static-text {
+  font-size: 48px;
+  color: white;
+  margin: 0;
+}
+
+.dynamic-text {
+  font-size: 50px;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(90deg, #00ddeb, #ff00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin: 0;
+}
+
+/* Style the Typed.js cursor */
+.typed-cursor {
+  height: 60px;
+  font-size: 48px;
+  color: #00ddeb;
+  margin-left: 5px;
+  line-height: 48px;
+  width: 4px;
+  display: inline-block;
+}
+
+/* Optional: Customize the blinking animation */
+.typed-cursor.typed-cursor--blink {
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Mobile View: Tablets and smaller (max-width: 768px) */
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+  }
+
+  .photo-container {
+    flex: none;
+  }
+
+  .round-photo {
+    width: 200px;
+    height: 200px;
+    border-width: 3px;
+    transform: scale(1.2); /* Maintain the zoom effect */
+  }
+
+  .text-container {
+    flex: none;
+    text-align: center;
+  }
+
+  .static-text {
+    font-size: 32px;
+  }
+
+  .sivag {
+    font-size: 32px;
+  }
+
+  .dynamic-text {
+    font-size: 34px;
+  }
+
+  .typed-cursor {
+    height: 40px;
+    font-size: 34px;
+    line-height: 34px;
+    width: 3px;
+  }
+}
+
+/* Mobile View: Small smartphones (max-width: 480px) */
+@media (max-width: 480px) {
+  .home-container {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .round-photo {
+    zoom: 128%;
+    margin-bottom: 10%;
+    width: 150px;
+    height: 150px;
+    border-width: 2px;
+    transform: scale(1.2); /* Maintain the zoom effect */
+  }
+
+  .static-text {
+     margin-top: 50px;
+    font-size: 24px;
+  }
+
+  .sivag {
+    font-size: 24px;
+  }
+
+  .dynamic-text {
+    font-size: 26px;
+  }
+
+  .typed-cursor {
+    height: 30px;
+    font-size: 26px;
+    line-height: 26px;
+    width: 2px;
+  }
+}

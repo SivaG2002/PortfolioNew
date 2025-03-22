@@ -1,24 +1,100 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
 import './App.css';
+import Home from './components/Home';
+import arrowDownIcon from './assets/arrow.png';
+
+// Import Font Awesome icons from react-icons
+import { FaHome, FaUser, FaGraduationCap, FaBriefcase, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
 
 function App() {
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
+
+  // Toggle the panel
+  const togglePanel = () => {
+    setIsPanelOpen(!isPanelOpen);
+  };
+
+  // Swipe handlers using react-swipeable
+  const swipeHandlers = useSwipeable({
+    onSwipedRight: () => setIsPanelOpen(true),
+    onSwipedLeft: () => setIsPanelOpen(false),
+    delta: 10,
+    preventDefaultTouchmoveEvent: true,
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App" {...swipeHandlers}>
+        {/* Hamburger Icon for Mobile */}
+        <button className="hamburger" onClick={togglePanel}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        {/* Navbar (visible on desktop, hidden on mobile) */}
+        <nav className={`navbar ${isPanelOpen ? 'panel-open' : ''}`}>
+          <ul className="nav-links">
+            <li>
+              <Link to="/" onClick={togglePanel}>
+                <FaHome className="nav-icon" /> <span className="nav-text">Home</span>
+              </Link>
+            </li>
+            <li>
+              <a href="#profile" onClick={togglePanel}>
+                <FaUser className="nav-icon" /> <span className="nav-text">Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="#education" onClick={togglePanel}>
+                <FaGraduationCap className="nav-icon" /> <span className="nav-text">Education</span>
+              </a>
+            </li>
+            <li>
+              <a href="#experience" onClick={togglePanel}>
+                <FaBriefcase className="nav-icon" /> <span className="nav-text">Experience</span>
+              </a>
+            </li>
+            <li>
+              <a href="#works" onClick={togglePanel}>
+                <FaProjectDiagram className="nav-icon" /> <span className="nav-text">Works</span>
+              </a>
+            </li>
+            <li>
+              <a href="#contact" onClick={togglePanel}>
+                <FaEnvelope className="nav-icon" /> <span className="nav-text">Contact</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Home Component */}
+        <Home />
+
+        {/* Chevron at the bottom middle */}
+        <div className="scroll-indicator">
+          <a href="#profile">
+            <img src={arrowDownIcon} alt="Scroll Down" className="chevron-icon" />
+          </a>
+        </div>
+
+        {/* Flaticon Attribution */}
+        <footer className="flaticon-attribution">
+          <p>
+            Arrow Down icon by{' '}
+            <a href="https://www.flaticon.com/authors/icon-small" target="_blank" rel="noopener noreferrer">
+              icon_small
+            </a>{' '}
+            from{' '}
+            <a href="https://www.flaticon.com" target="_blank" rel="noopener noreferrer">
+              Flaticon
+            </a>
+          </p>
+        </footer>
+      </div>
+    </Router>
   );
 }
 
