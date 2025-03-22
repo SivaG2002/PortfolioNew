@@ -80,19 +80,6 @@ function App() {
           </a>
         </div>
 
-        {/* Flaticon Attribution */}
-        <footer className="flaticon-attribution">
-          <p>
-            Arrow Down icon by{' '}
-            <a href="https://www.flaticon.com/authors/icon-small" target="_blank" rel="noopener noreferrer">
-              icon_small
-            </a>{' '}
-            from{' '}
-            <a href="https://www.flaticon.com" target="_blank" rel="noopener noreferrer">
-              Flaticon
-            </a>
-          </p>
-        </footer>
       </div>
     </Router>
   );

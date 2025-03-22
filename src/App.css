@@ -73,7 +73,7 @@ body {
 .navbar a {
   color: white;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 12px;
   padding: 8px 16px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50px;
@@ -108,7 +108,7 @@ body {
 }
 
 .navbar a:active::before {
-  transform: scale(0.9);
+  transform: scale(0.1);
   opacity: 0.5;
 }
 
