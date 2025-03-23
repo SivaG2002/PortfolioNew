@@ -1,0 +1,345 @@
+.profile-section {
+  position: relative;
+  /* min-height: 70vh; */
+  min-height: 70vh;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Profile Heading (Top Left, Gradient) */
+.profile-heading {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  font-size: 48px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #00ddeb, #ff00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  z-index: 2;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; /* Playful font */
+}
+
+/* Doodle Container */
+.doodle-container {
+  flex-grow: 1;
+  display: flex;
+  gap: 30px;
+  max-width: 1200px;
+  margin-left: 20vw;
+  margin-top:-15vh;
+}
+
+/* Left Side: Circle and About Me */
+.doodle-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align to the left to match the screenshot */
+  gap: 20px;
+  width: 70%; /* Matches the screenshot proportions */
+  margin-left: 10vw;
+}
+
+/* Decorative Circle (Photo Placement) */
+.decorative-circle {
+  width: 15vw;
+  height: 15vw;
+  background: radial-gradient(circle, #87ceeb 50%, #32cd32 100%);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  animation: draw-in 1.5s ease forwards;
+  border: 2px solid transparent;
+  top: 30vh;
+  margin-right: 40px;
+  margin-left: 40px  ;
+}
+
+/* Doodle Border for Circle */
+.decorative-circle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid white;
+  border-radius: 50%;
+  z-index: -1;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.3"/></svg>') repeat;
+  opacity: 0.5;
+  animation: draw-border 1.5s ease forwards;
+}
+
+
+
+/* Right Side: Two Boxes */
+.doodle-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 25%; /* Matches the screenshot proportions */
+  margin-left: 30px;
+}
+
+/* Doodle Boxes */
+.doodle-box {
+  background: rgba(255, 255, 255, 0.05); /* Subtle glass effect */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px solid transparent;
+  border-radius: 20px;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top to match the screenshot */
+  align-items: flex-start; /* Align content to the left to match the screenshot */
+  text-align: left; /* Left-align text to match the screenshot */
+  padding: 20px;
+  animation: draw-in 1.5s ease forwards;
+}
+
+/* About Me (Large Box) */
+.about-me {
+  width: 100%;
+  height: 450px; /* Matches the screenshot height */
+  padding: 20px;
+}
+
+/* Personal Details and Contacts */
+.personal-details,
+.contacts {
+  width: 100%;
+  height: 200px; /* Matches the screenshot height */
+  padding: 20px;
+}
+
+/* Doodle Border Effect (Hand-Drawn Look) */
+.doodle-box::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid white;
+  border-radius: 20px;
+  z-index: -1;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.3"/></svg>') repeat;
+  opacity: 0.5;
+  animation: draw-border 1.5s ease forwards;
+}
+
+/* Draw-in Animation for Boxes */
+@keyframes draw-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Draw Border Animation */
+@keyframes draw-border {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  75% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* Hover Effect */
+.doodle-box:hover {
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Content Styles Inside Doodle Boxes */
+.doodle-box h3 {
+  font-size: 24px;
+  margin: 0 0 15px 0;
+  color: #00ddeb;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; /* Playful font */
+}
+
+.doodle-box p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+}
+
+.profile-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+}
+
+.profile-details li {
+  margin-bottom: 8px;
+}
+
+.profile-details strong {
+  color: #00ddeb;
+}
+
+.flag {
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-heading {
+    font-size: 36px;
+    top: 20px;
+    left: 20px;
+  }
+
+  .doodle-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .doodle-left {
+    width: 100%;
+    align-items: center; /* Center on smaller screens */
+  }
+
+  .decorative-circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cloud {
+    top: 15px;
+    left: 30px;
+    width: 60px;
+    height: 25px;
+  }
+
+  .landscape {
+    height: 40%;
+  }
+
+  .about-me {
+    width: 100%;
+    height: 350px;
+    padding: 20px;
+  }
+
+  .doodle-right {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .personal-details,
+  .contacts {
+    width: 200px;
+    height: 150px;
+    padding: 15px;
+  }
+
+  .doodle-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .doodle-box p,
+  .profile-details {
+    font-size: 14px;
+  }
+
+  .flag {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-heading {
+    font-size: 28px;
+    top: 15px;
+    left: 15px;
+  }
+
+  .doodle-container {
+    gap: 15px;
+  }
+
+  .decorative-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cloud {
+    top: 10px;
+    left: 25px;
+    width: 50px;
+    height: 20px;
+  }
+
+  .landscape {
+    height: 35%;
+  }
+
+  .about-me {
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+  }
+
+  .doodle-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .personal-details,
+  .contacts {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+  }
+
+  .doodle-box h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .doodle-box p,
+  .profile-details {
+    font-size: 12px;
+  }
+
+  .flag {
+    font-size: 12px;
+  }
+}

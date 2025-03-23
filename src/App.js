@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-import { useSwipeable } from 'react-swipeable';
-import './App.css';
-import Home from './components/Home';
-import arrowDownIcon from './assets/arrow.png';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
+import { useSwipeable } from "react-swipeable";
+import "./App.css";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Education from "./pages/Education";
+import Experience from "./pages/Experience";
+import arrowDownIcon from "./assets/arrow.png";
 
 // Import Font Awesome icons from react-icons
-import { FaHome, FaUser, FaGraduationCap, FaBriefcase, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
+import {
+  FaHome,
+  FaUser,
+  FaGraduationCap,
+  FaBriefcase,
+  FaProjectDiagram,
+  FaEnvelope,
+} from "react-icons/fa";
 
 function App() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -35,51 +45,66 @@ function App() {
         </button>
 
         {/* Navbar (visible on desktop, hidden on mobile) */}
-        <nav className={`navbar ${isPanelOpen ? 'panel-open' : ''}`}>
+        <nav className={`navbar ${isPanelOpen ? "panel-open" : ""}`}>
           <ul className="nav-links">
             <li>
               <Link to="/" onClick={togglePanel}>
-                <FaHome className="nav-icon" /> <span className="nav-text">Home</span>
+                <FaHome className="nav-icon" />{" "}
+                <span className="nav-text">Home</span>
               </Link>
             </li>
             <li>
-              <a href="#profile" onClick={togglePanel}>
-                <FaUser className="nav-icon" /> <span className="nav-text">Profile</span>
-              </a>
+              <Link to="/profile" onClick={togglePanel}>
+                <FaUser className="nav-icon" />{" "}
+                <span className="nav-text">Profile</span>
+              </Link>
             </li>
             <li>
-              <a href="#education" onClick={togglePanel}>
-                <FaGraduationCap className="nav-icon" /> <span className="nav-text">Education</span>
-              </a>
+              <Link to="/education" onClick={togglePanel}>
+                <FaGraduationCap className="nav-icon" />{" "}
+                <span className="nav-text">Education</span>
+              </Link>
             </li>
             <li>
-              <a href="#experience" onClick={togglePanel}>
-                <FaBriefcase className="nav-icon" /> <span className="nav-text">Experience</span>
-              </a>
+              <Link to="/experience" onClick={togglePanel}>
+                <FaBriefcase className="nav-icon" />{" "}
+                <span className="nav-text">Experience</span>
+              </Link>
             </li>
             <li>
-              <a href="#works" onClick={togglePanel}>
-                <FaProjectDiagram className="nav-icon" /> <span className="nav-text">Works</span>
-              </a>
+              <Link to="/works" onClick={togglePanel}>
+                <FaProjectDiagram className="nav-icon" />{" "}
+                <span className="nav-text">Works</span>
+              </Link>
             </li>
             <li>
-              <a href="#contact" onClick={togglePanel}>
-                <FaEnvelope className="nav-icon" /> <span className="nav-text">Contact</span>
-              </a>
+              <Link to="/contact" onClick={togglePanel}>
+                <FaEnvelope className="nav-icon" />{" "}
+                <span className="nav-text">Contact</span>
+              </Link>
             </li>
           </ul>
         </nav>
 
-        {/* Home Component */}
-        <Home />
-
-        {/* Chevron at the bottom middle */}
-        <div className="scroll-indicator">
-          <a href="#profile">
-            <img src={arrowDownIcon} alt="Scroll Down" className="chevron-icon" />
-          </a>
+        {/* Main Content Wrapper */}
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            {/* Add placeholder routes for other sections */}
+            <Route path="/education" element={<Education/>} />
+            <Route path="/experience" element={<Experience/>} />
+            <Route path="/works" element={<div>Works Page (Coming Soon)</div>} />
+            <Route path="/contact" element={<div>Contact Page (Coming Soon)</div>} />
+          </Routes>
         </div>
 
+        {/* Chevron at the bottom middle */}
+        {/* <div className="scroll-indicator">
+          <Link to="/profile">
+            <img src={arrowDownIcon} alt="Scroll Down" className="chevron-icon" />
+          </Link>
+        </div> */}
       </div>
     </Router>
   );

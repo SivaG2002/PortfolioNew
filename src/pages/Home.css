@@ -4,6 +4,7 @@
   justify-content: center;
   flex-grow: 1;
   padding: 50px;
+  min-height: 80vh;
 }
 
 .sivag {

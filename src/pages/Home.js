@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import Typed from 'typed.js'; // Import Typed.js directly
-import yourPhoto from '../assets/profile-img.png';
 import './Home.css';
 
 function Home() {
@@ -29,7 +28,7 @@ function Home() {
     <div className="home-container">
       {/* Left Side: Round Photo */}
       <div className="photo-container">
-        <img src={yourPhoto} alt="Your Photo" className="round-photo" />
+        <img src="profilepic.png" alt="Your Photo" className="round-photo" />
       </div>
 
       {/* Right Side: Text */}
