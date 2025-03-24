@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Education from "./pages/Education";
 import Experience from "./pages/Experience";
+import Contact from  "./pages/Contact";
 import arrowDownIcon from "./assets/arrow.png";
 
 // Import Font Awesome icons from react-icons
@@ -94,8 +95,9 @@ function App() {
             {/* Add placeholder routes for other sections */}
             <Route path="/education" element={<Education/>} />
             <Route path="/experience" element={<Experience/>} />
+
             <Route path="/works" element={<div>Works Page (Coming Soon)</div>} />
-            <Route path="/contact" element={<div>Contact Page (Coming Soon)</div>} />
+            <Route path="/contact" element={<Contact/>} />
           </Routes>
         </div>
 

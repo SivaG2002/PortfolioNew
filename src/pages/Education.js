@@ -157,6 +157,8 @@ const NodeDetail = styled.p`
   color: #34495e;
   margin: 5px 0;
   line-height: 1.6;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
 `;
 
 const EducationRoadmap = () => {
