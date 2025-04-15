@@ -37,10 +37,11 @@ const MovingDots = () => {
     // Dot class for galaxy-like stars with repulsion
     class Dot {
       constructor() {
-        this.x = Math.random() * canvas.width * 0.2; // Start near top-left
-        this.y = Math.random() * canvas.height * 0.2;
-        this.speedX = 0.2 + Math.random() * 0.5; // Slower for galaxy effect
-        this.speedY = 0.2 + Math.random() * 0.5;
+        this.x = Math.random() * canvas.width * 0.2; // Start near top-left (0–20% of width)
+        this.y = Math.random() * canvas.height * 0.2; // Start near top (0–20% of height)
+        // Spread to bottom-left, bottom-middle, bottom-right
+        this.speedX = (Math.random() - 1) * 1.0; // Random X speed: -0.5 to 0.5
+        this.speedY = 0.2 + Math.random() * 1; // Move down (positive speed)
         this.radius = 0.5 + Math.random() * 0.5; // Tiny dots (0.5–1px)
         this.color = 'hsl(0, 0%, 100%)'; // White
         this.opacity = 0.3 + Math.random() * 0.7; // Twinkling effect
@@ -68,10 +69,16 @@ const MovingDots = () => {
           }
         }
 
-        // Reset to top-left if it reaches bottom-right or goes off-screen
-        if (this.x > canvas.width || this.y > canvas.height || this.x < 0 || this.y < 0) {
-          this.x = Math.random() * canvas.width * 0.2;
-          this.y = Math.random() * canvas.height * 0.2;
+        // Reset to top-left if it goes off-screen
+        if (
+          this.x > canvas.width ||
+          this.y > canvas.height ||
+          this.x < 0 ||
+          this.y < 0
+        ) {
+          this.x = Math.random() * canvas.width * 0.2; // Reset to top-left
+          this.y = Math.random() * canvas.height * 0.2; // Reset to top
+          this.speedX = (Math.random() - 0.5) * 1.0; // Re-randomize X speed
           this.opacity = 0.3 + Math.random() * 0.7; // New opacity on reset
         }
       }
@@ -87,7 +94,7 @@ const MovingDots = () => {
     }
 
     // Initialize dots (5000 for sparse galaxy effect)
-    const dotCount = 5000;
+    const dotCount = 20000;
     for (let i = 0; i < dotCount; i++) {
       dots.current.push(new Dot());
     }
